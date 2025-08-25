@@ -1,11 +1,9 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
-
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -31,13 +29,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Prepare deployment files
+        run: |
+          mkdir -p deploy-temp
+          cp index.html deploy-temp/
+          if [ -d "assets" ]; then
+            cp -r assets deploy-temp/
+          fi
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload only assets folder and index.html
+          path: './deploy-temp'
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

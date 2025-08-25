@@ -1,0 +1,36 @@
+.console { 
+    background: #1a1a1a; 
+    color: #e0e0e0; 
+    font-family: monospace; 
+    padding: 1rem; 
+    border-radius: 4px; 
+    height: 150px; 
+    overflow-y: auto; 
+    white-space: pre-wrap; 
+    font-size: 0.875rem; 
+}
+.file-drop-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.file-drop-area:hover, 
+.file-drop-area.drag-over { 
+    border-color: #0066cc; 
+    background: #e7f3ff; 
+}
+.file-drop-area.drag-over {
+    transform: scale(1.02);
+}
+#fileInput {
+    display: none;
+}
